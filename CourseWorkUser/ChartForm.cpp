@@ -1,0 +1,59 @@
+#include "ChartForm.h"
+#include "MenuForm.h"
+#include "Root.h"
+#include <string>
+
+using namespace std;
+System::Void CourseWorkUser::ChartForm::button1_Click(System::Object^ sender, System::EventArgs^ e)
+{
+    MenuForm^ form = gcnew MenuForm();
+    this->Hide();
+    form->Show();
+}
+System::Void CourseWorkUser::ChartForm::printVectors(std::vector<double**> vec) {
+    dataGridView1->ColumnCount = vec.size();
+    dataGridView1->RowCount = vec.size();
+    dataGridView1->AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode::AutoSizeToAllHeaders);
+    dataGridView1->AutoResizeColumns();
+    for (int i = 0; i < vec.size(); i++) {
+        dataGridView1->Columns[i]->HeaderCell->Value = "X" + Convert::ToString(i + 1);
+    }
+    for (int i = 0; i < vec.size(); i++) {
+        for (int j = 0; j < vec.size(); j++) {
+            dataGridView1->Rows[i]->Cells[j]->Value = vec[i][j][0];
+        }
+    }
+}
+System::Void CourseWorkUser::ChartForm::printSelfNumbers(Root roots) {
+    string selfNumbers;
+    for (int i = 0; i < roots.getNum(); i++) {
+        selfNumbers += "L" + to_string(i + 1) + ": " + to_string(real(roots.getMas()[i])) + "  ";
+    }
+    String^ s = gcnew System::String(selfNumbers.c_str());
+    label5->Text = s;
+}
+System::Void CourseWorkUser::ChartForm::printChart(std::vector<double> vec)
+{
+    chart1->Series[0]->Points->Clear();
+    string function =  + "y = x^" + to_string(vec.size()) + " ";
+    for (int i = 0; i < vec.size(); i++) {
+        if (i < vec.size() - 1 && -1 * vec[i + 1] > 0) {
+            function += to_string(-1 * vec[i]) + "x^" + to_string(vec.size() - i - 1) + "+";
+        }
+        else {
+            function += to_string(-1 * vec[i]) + "x^" + to_string(vec.size() - i - 1) + " ";
+        }
+    }
+    String^ s = gcnew System::String(function.c_str());
+    label2->Text = s;
+    for (int x = -3; x <= 3; x++) {
+        double sum = 0;
+        for (int i = 0; i < vec.size(); i++) {
+            sum += (-1)*(vec[i] * pow(x, vec.size() - i - 1));
+        }
+        sum += pow(x, vec.size());
+        double y = sum;
+        chart1->Series[0]->Points->AddXY(x, y);
+    }
+}
+
