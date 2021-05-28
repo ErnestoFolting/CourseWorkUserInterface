@@ -101,10 +101,16 @@ System::Void CourseWorkUser::MenuForm::button1_Click(System::Object^ sender, Sys
         if (radioButton1->Checked) {
             matrix Matrix(size);
             Matrix.setMatr(Matr);
-            Matrix.Danilevsky();
-            form->printChart(Matrix.getP(), Matrix.getAreaOfRoots());
-            form->printVectors(Matrix.getVectorsX());
-            form->printSelfNumbers(Matrix.getRoot());
+            if (Matrix.Danilevsky()) {
+                form->printChart(Matrix.getP(), Matrix.getAreaOfRoots());
+                form->printVectors(Matrix.getVectorsX());
+                form->printSelfNumbers(Matrix.getRoot());
+            }
+            else {
+                form->Hide();
+                MenuForm^ form = gcnew MenuForm();
+                form->Show();
+            }
         }
         else if (radioButton2->Checked) {
             double** vectorY0 = new double* [size];
@@ -115,10 +121,16 @@ System::Void CourseWorkUser::MenuForm::button1_Click(System::Object^ sender, Sys
             matrix Matrix(size);
             Matrix.setMatr(Matr);
             Matrix.setY0(vectorY0);
-            Matrix.Krylov();
-            form->printChart(Matrix.getP(), Matrix.getAreaOfRoots());
-            form->printVectors(Matrix.getVectorsX());
-            form->printSelfNumbers(Matrix.getRoot());
+            if (Matrix.Krylov()) {
+                form->printChart(Matrix.getP(), Matrix.getAreaOfRoots());
+                form->printVectors(Matrix.getVectorsX());
+                form->printSelfNumbers(Matrix.getRoot());
+            }
+            else {
+                form->Hide();
+                MenuForm^ form = gcnew MenuForm();
+                form->Show();
+            }
         }
     }
 }

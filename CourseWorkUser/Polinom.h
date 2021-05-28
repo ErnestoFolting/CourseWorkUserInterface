@@ -12,7 +12,7 @@ public:
     complex  mas[NMAX];
     int n;
     static complex FPol(Polinom& p, complex& x);
-    static void FindAllRoot(Polinom& pp, Root& r);
+    static bool FindAllRoot(Polinom& pp, Root& r);
     Polinom(double** Matr, int n);
     Polinom(std::vector<double>);
     Polinom() :n(0) {};

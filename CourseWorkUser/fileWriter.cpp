@@ -31,3 +31,9 @@ void fileWriter::outputMatr(matrix tempMatr) {
 	}
 	outFile.close();
 }
+void fileWriter::outputError() {
+	ofstream outFile("result.txt");
+	outFile << "Власні корені та вектори не були знайдені! " << endl << endl;
+	outFile << "Помилкою може бути:\nПри знаходженні матриці D методом Данилевського відбувається спроба ділення на 0.\nВиникають комплексні корені.\nМожливо Ви не ввели всі числа матриці." << endl;
+	outFile.close();
+}

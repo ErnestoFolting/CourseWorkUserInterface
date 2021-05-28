@@ -28,21 +28,21 @@ public:
 	matrix(int n, int m):rows(n),columns(m){}
 	static double** multiplyMatrix(double** Matr1, int n1, int m1, double** Matr2, int n2, int m2);
 	static double** crIdentityMatrix(int n);
-	void calculateMatrixB (int stage);
+	bool calculateMatrixB (int stage);
 	static double** calculateMatrixBReverse(double** Matr, int n,int stage);
-	void calculateMatrixP();
+	bool calculateMatrixP();
 	void createSelfVectors();
 	static void toNorm(double** Matr, int rows);
-	void findRoots();
+	bool findRoots();
 	void findSystem();
 	void Kramer();
 	static double det(double** matr, int N);
 	std::vector<double> getAreaOfRoots();
 	void findQ();
 	void findVectorsX();
-	void Danilevsky();
+	bool Danilevsky();
 	void findAreaOfRoots();
-	void Krylov();
+	bool Krylov();
 	Root getRoot();
 	std::vector<double**> getVectorsX();
  	matrix operator*(double x);

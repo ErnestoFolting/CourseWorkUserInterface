@@ -1,4 +1,5 @@
 #include "Polinom.h"
+#include <fstream>
 using namespace System;
 using namespace System::ComponentModel;
 using namespace System::Collections;
@@ -16,7 +17,7 @@ complex Polinom::FPol(Polinom& p, complex& x)
     return tmp;
 }
 
-void Polinom::FindAllRoot(Polinom& pp, Root& r)
+bool Polinom::FindAllRoot(Polinom& pp, Root& r)
 {
     int i, j;
     complex x1, x0;
@@ -24,7 +25,7 @@ void Polinom::FindAllRoot(Polinom& pp, Root& r)
 
     p = pp;
     r.setNum(p.n);
-
+    int counter = 0;
     for (i = 0; i < r.getNum(); i++)
     {
         defp.n = p.n - 1;
@@ -33,24 +34,33 @@ void Polinom::FindAllRoot(Polinom& pp, Root& r)
             defp.mas[j] = p.mas[j + 1] * complex(j + 1);
 
         x1 = complex(1, 1);
-
+        
         do
         {
             x0 = x1;
-
+            counter++;
             x1 = x0 - Polinom::FPol(p, x0) / Polinom::FPol(defp, x0);
         } while (abs(Polinom::FPol(p, x1)) > 1e-12);
-
-        r.getMas()[i] = x1;
-        if (imag(r.getMas()[i]) > 1e-10) {
-            MessageBox::Show("При обчисленні виникають комплексні корені.\nСпробуйте іншу матрицю.", "Помилка");
-            exit(2);
+       
+        if (isnan(real(x1))) {
+            MessageBox::Show("Не вдалось знайти власні числа.\n Можливо Ви не ввели всі коефіцієнти\nСпробуйте іншу матрицю.", "Помилка");
+            return 0;
         }
+        if (imag(x1) > 1e-10) {
+            MessageBox::Show("При обчисленні виникають комплексні корені.\nСпробуйте іншу матрицю.", "Помилка");
+            return 0;
+        }
+        r.getMas()[i] = x1;
+        
 
         for (j = p.n - 1; j >= 0; j--) p.mas[j] = p.mas[j] + p.mas[j + 1] * x1;
         for (j = 0; j < p.n; j++) p.mas[j] = p.mas[j + 1];
         p.n--;
     }
+    std::ofstream outFile("result.txt", std::ios::app);
+    outFile << "Counter: " << std::endl << counter << std::endl;
+    outFile.close();
+    return 1;
 }
 Polinom::Polinom(double** Matr, int columns) {
     n = columns;

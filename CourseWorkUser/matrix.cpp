@@ -49,10 +49,14 @@ double** matrix::crIdentityMatrix(int n)
 	return Matr;
 }
 
-void matrix::calculateMatrixB(int stage)
+bool matrix::calculateMatrixB(int stage)
 {
 	MatrB = crIdentityMatrix(rows);
 	for (int j = 0; j < rows; j++) {
+		if (abs((Matr[rows - stage][rows - stage - 1] - 0)) < 1e-10) {
+			MessageBox::Show("При обчисленні виникає ділення на 0\nСпробуйте іншу матрицю.", "Помилка");
+			return 0;
+		}
 		if (j == rows - stage-1) {
 			MatrB[rows - stage - 1][rows - stage - 1] = 1 / (Matr[rows-stage][rows - stage - 1]);
 		}
@@ -66,6 +70,7 @@ void matrix::calculateMatrixB(int stage)
 	else {
 		MatrBN = multiplyMatrix(MatrBN, rows, rows, MatrB, rows, rows);
 	}
+	return 1;
 }
 
 double** matrix::calculateMatrixBReverse(double** Matr, int n,int stage)
@@ -76,35 +81,47 @@ double** matrix::calculateMatrixBReverse(double** Matr, int n,int stage)
 	}
 	return MatrReverse;
 }
-void matrix::calculateMatrixP() {
+bool matrix::calculateMatrixP() {
 	double** MatrD = Matr;
 	vector<double> p;
 	int k = 0;
 	for (int i = 1; i < rows; i++) {
-		calculateMatrixB(i);
-		double** MatrBReverse = calculateMatrixBReverse(Matr, rows,i);
-		MatrD = matrix::multiplyMatrix(matrix::multiplyMatrix(MatrBReverse, rows, rows, Matr, rows, rows), rows, rows, MatrB, rows, rows);
-		Matr = MatrD;
-		double currentD;
-		if (rows - 3 - k >= 0) {
-			currentD = MatrD[rows - i - 1][rows - 3 - k];
-			if (currentD == 0) {
-				MessageBox::Show("При обчисленні виникає ділення на 0\nСпробуйте іншу матрицю.", "Помилка");
-				exit(3);
+		if (calculateMatrixB(i)) {
+			double** MatrBReverse = calculateMatrixBReverse(Matr, rows, i);
+			MatrD = matrix::multiplyMatrix(matrix::multiplyMatrix(MatrBReverse, rows, rows, Matr, rows, rows), rows, rows, MatrB, rows, rows);
+			Matr = MatrD;
+			double currentD;
+			if (rows - 3 - k >= 0) {
+				currentD = MatrD[rows - i - 1][rows - 3 - k];
 			}
+			k++;
 		}
-		k++;
+		else {
+			return 0;
+		}
+		
 	}
-	for (int i = 0; i < rows; i++)p.push_back(MatrD[0][i]);
+	for (int i = 0; i < rows; i++) p.push_back(MatrD[0][i]);
 	this->p = p;
+	return 1;
 }
-void matrix::Danilevsky() {
+bool matrix::Danilevsky() {
 	fileWriter::outputMatr(*this);
 	findAreaOfRoots();
-	calculateMatrixP();
-	findRoots();
-	createSelfVectors();
-	fileWriter::outputSelf(*this);
+	if (calculateMatrixP()) {
+		if (findRoots()) {
+			createSelfVectors();
+			fileWriter::outputSelf(*this);
+			return 1;
+		}
+		else {
+			fileWriter::outputError();
+			return 0;
+		}
+	}
+	else {
+		return 0;
+	}
 }
 
 void matrix::findAreaOfRoots()
@@ -121,15 +138,19 @@ void matrix::findAreaOfRoots()
 	this->areaOfRoots = area;
 }
 
-void matrix::Krylov() {
+bool matrix::Krylov() {
 	fileWriter::outputMatr(*this);
 	findAreaOfRoots();
 	findSystem();
 	Kramer();
-	findRoots();
-	findQ();
-	findVectorsX();
-	fileWriter::outputSelf(*this);
+	if (findRoots()) {
+		findQ();
+		findVectorsX();
+		fileWriter::outputSelf(*this);
+		return 1;
+	}
+	fileWriter::outputError();
+	return 0;
 }
 Root matrix::getRoot()
 {
@@ -350,9 +371,15 @@ matrix matrix::operator-(matrix tempMatr)
 	}
 	return newMatr;
 }
-void matrix::findRoots() {
+bool matrix::findRoots() {
 	Polinom polinom(this->p);
 	Root r;
-	Polinom::FindAllRoot(polinom, r);
-	this->r = r;
+	if (Polinom::FindAllRoot(polinom, r)) {
+		this->r = r;
+		return 1;
+	}
+	else {
+		return 0;
+	}
+
 }

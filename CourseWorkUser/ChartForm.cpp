@@ -52,7 +52,7 @@ System::Void CourseWorkUser::ChartForm::printChart(std::vector<double> vec,std::
     }
     String^ s = gcnew System::String(function.c_str());
     label2->Text = s;
-    for (int x = min-1; x <= max+1; x++) {
+    for (int x = round(min)-1; x <= round(max)+1; x++) {
         double sum = 0;
         for (int i = 0; i < vec.size(); i++) {
             sum += (-1)*(vec[i] * pow(x, vec.size() - i - 1));

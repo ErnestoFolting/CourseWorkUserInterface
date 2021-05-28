@@ -182,7 +182,7 @@ namespace CourseWorkUser {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::Window;
+			this->BackColor = System::Drawing::SystemColors::WindowFrame;
 			this->ClientSize = System::Drawing::Size(1184, 561);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);

@@ -8,5 +8,6 @@ class fileWriter
 public:
 	static void outputSelf(matrix tempMatr);
 	static void outputMatr(matrix tempMatr);
+	static void outputError();
 };
 
