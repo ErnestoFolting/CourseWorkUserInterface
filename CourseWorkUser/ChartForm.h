@@ -45,6 +45,8 @@ namespace CourseWorkUser {
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::Label^ label7;
 
 	protected:
 
@@ -61,9 +63,9 @@ namespace CourseWorkUser {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Title^ title1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea3 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Title^ title3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
@@ -72,6 +74,8 @@ namespace CourseWorkUser {
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->label7 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
@@ -102,20 +106,20 @@ namespace CourseWorkUser {
 			// 
 			// chart1
 			// 
-			chartArea1->Name = L"ChartArea1";
-			this->chart1->ChartAreas->Add(chartArea1);
+			chartArea3->Name = L"ChartArea1";
+			this->chart1->ChartAreas->Add(chartArea3);
 			this->chart1->Location = System::Drawing::Point(581, 118);
 			this->chart1->Name = L"chart1";
-			series1->ChartArea = L"ChartArea1";
-			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
-			series1->Name = L"Series1";
-			this->chart1->Series->Add(series1);
+			series3->ChartArea = L"ChartArea1";
+			series3->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
+			series3->Name = L"Series1";
+			this->chart1->Series->Add(series3);
 			this->chart1->Size = System::Drawing::Size(572, 300);
 			this->chart1->TabIndex = 2;
 			this->chart1->Text = L"chart1";
-			title1->Name = L"Title1";
-			title1->Text = L"Ãðàô³ê";
-			this->chart1->Titles->Add(title1);
+			title3->Name = L"Title1";
+			title3->Text = L"Ãðàô³ê";
+			this->chart1->Titles->Add(title3);
 			// 
 			// label2
 			// 
@@ -178,12 +182,37 @@ namespace CourseWorkUser {
 			this->label5->Size = System::Drawing::Size(425, 50);
 			this->label5->TabIndex = 7;
 			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->BackColor = System::Drawing::SystemColors::Window;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Oswald", 9.749999F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label6->Location = System::Drawing::Point(624, 444);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(52, 22);
+			this->label6->TabIndex = 8;
+			this->label6->Text = L"²òåðàö³¿";
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->BackColor = System::Drawing::SystemColors::Window;
+			this->label7->Font = (gcnew System::Drawing::Font(L"Oswald", 9.749999F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label7->Location = System::Drawing::Point(624, 469);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(0, 22);
+			this->label7->TabIndex = 9;
+			// 
 			// ChartForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::WindowFrame;
 			this->ClientSize = System::Drawing::Size(1184, 561);
+			this->Controls->Add(this->label7);
+			this->Controls->Add(this->label6);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->dataGridView1);
@@ -209,5 +238,6 @@ namespace CourseWorkUser {
 	public:  System::Void printChart(std::vector<double> vec,std::vector<double> areaOfRoots);
 	public:  System::Void CourseWorkUser::ChartForm::printVectors(std::vector<double**> vec);
 	public:  System::Void CourseWorkUser::ChartForm::printSelfNumbers(Root roots);
+	public:	  System::Void CourseWorkUser::ChartForm::printStatistics(int iterations);
 };
 }

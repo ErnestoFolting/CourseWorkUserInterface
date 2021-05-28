@@ -32,6 +32,11 @@ System::Void CourseWorkUser::ChartForm::printSelfNumbers(Root roots) {
     String^ s = gcnew System::String(selfNumbers.c_str());
     label5->Text = s;
 }
+System::Void CourseWorkUser::ChartForm::printStatistics(int iterations) {
+    string iterationsStr = to_string(iterations);
+    String^ s = gcnew System::String(iterationsStr.c_str());
+    label7->Text = s;
+}
 System::Void CourseWorkUser::ChartForm::printChart(std::vector<double> vec,std::vector<double>areaOfRoots)
 {
     double min = areaOfRoots[0];

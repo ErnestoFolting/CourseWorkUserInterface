@@ -31,6 +31,14 @@ void fileWriter::outputMatr(matrix tempMatr) {
 	}
 	outFile.close();
 }
+void fileWriter::outputStatistic(matrix tempMatr)
+{
+	ofstream outFile("result.txt", ios::app);
+	outFile << endl << "--------------ОЦІНКА СКЛАДНОСТІ--------------" << endl;
+	outFile << "Загальна кількість ітерацій для знаходження власних чисел: ";
+	outFile << tempMatr.iterations << endl;
+	outFile.close();
+}
 void fileWriter::outputError() {
 	ofstream outFile("result.txt");
 	outFile << "Власні корені та вектори не були знайдені! " << endl << endl;

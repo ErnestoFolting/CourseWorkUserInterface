@@ -105,6 +105,7 @@ System::Void CourseWorkUser::MenuForm::button1_Click(System::Object^ sender, Sys
                 form->printChart(Matrix.getP(), Matrix.getAreaOfRoots());
                 form->printVectors(Matrix.getVectorsX());
                 form->printSelfNumbers(Matrix.getRoot());
+                form->printStatistics(Matrix.getIterations());
             }
             else {
                 form->Hide();
@@ -125,6 +126,7 @@ System::Void CourseWorkUser::MenuForm::button1_Click(System::Object^ sender, Sys
                 form->printChart(Matrix.getP(), Matrix.getAreaOfRoots());
                 form->printVectors(Matrix.getVectorsX());
                 form->printSelfNumbers(Matrix.getRoot());
+                form->printStatistics(Matrix.getIterations());
             }
             else {
                 form->Hide();

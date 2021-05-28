@@ -14,6 +14,7 @@ class matrix
 	std::vector<double**> vectorsX;
 	double** MatrP;
 	double** MatrBN;
+	int iterations;
 	double** MatrB;
 	int rows;
 	double** Matr;
@@ -41,6 +42,7 @@ public:
 	void findQ();
 	void findVectorsX();
 	bool Danilevsky();
+	int getIterations();
 	void findAreaOfRoots();
 	bool Krylov();
 	Root getRoot();
@@ -49,5 +51,6 @@ public:
 	matrix operator+(matrix tempMatr);
 	matrix operator-(matrix tempMatr);
 	friend class fileWriter;
+	friend class Polinom;
 };
 

@@ -112,6 +112,7 @@ bool matrix::Danilevsky() {
 		if (findRoots()) {
 			createSelfVectors();
 			fileWriter::outputSelf(*this);
+			fileWriter::outputStatistic(*this);
 			return 1;
 		}
 		else {
@@ -120,8 +121,14 @@ bool matrix::Danilevsky() {
 		}
 	}
 	else {
+		fileWriter::outputError();
 		return 0;
 	}
+}
+
+int matrix::getIterations()
+{
+	return iterations;
 }
 
 void matrix::findAreaOfRoots()
@@ -147,6 +154,7 @@ bool matrix::Krylov() {
 		findQ();
 		findVectorsX();
 		fileWriter::outputSelf(*this);
+		fileWriter::outputStatistic(*this);
 		return 1;
 	}
 	fileWriter::outputError();
@@ -374,8 +382,9 @@ matrix matrix::operator-(matrix tempMatr)
 bool matrix::findRoots() {
 	Polinom polinom(this->p);
 	Root r;
-	if (Polinom::FindAllRoot(polinom, r)) {
+	if (polinom.FindAllRoot(r)) {
 		this->r = r;
+		this->iterations = polinom.getIterations();
 		return 1;
 	}
 	else {

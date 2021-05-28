@@ -17,21 +17,19 @@ complex Polinom::FPol(Polinom& p, complex& x)
     return tmp;
 }
 
-bool Polinom::FindAllRoot(Polinom& pp, Root& r)
+bool Polinom::FindAllRoot(Root& r)
 {
     int i, j;
     complex x1, x0;
-    Polinom defp, p;
-
-    p = pp;
-    r.setNum(p.n);
+    Polinom defp;
+    r.setNum(n);
     int counter = 0;
     for (i = 0; i < r.getNum(); i++)
     {
-        defp.n = p.n - 1;
+        defp.n = n - 1;
 
-        for (j = 0; j < p.n; j++)
-            defp.mas[j] = p.mas[j + 1] * complex(j + 1);
+        for (j = 0; j < n; j++)
+            defp.mas[j] = mas[j + 1] * complex(j + 1);
 
         x1 = complex(1, 1);
         
@@ -39,8 +37,8 @@ bool Polinom::FindAllRoot(Polinom& pp, Root& r)
         {
             x0 = x1;
             counter++;
-            x1 = x0 - Polinom::FPol(p, x0) / Polinom::FPol(defp, x0);
-        } while (abs(Polinom::FPol(p, x1)) > 1e-12);
+            x1 = x0 - Polinom::FPol(*this, x0) / Polinom::FPol(defp, x0);
+        } while (abs(Polinom::FPol(*this, x1)) > 1e-12);
        
         if (isnan(real(x1))) {
             MessageBox::Show("Не вдалось знайти власні числа.\n Можливо Ви не ввели всі коефіцієнти\nСпробуйте іншу матрицю.", "Помилка");
@@ -53,13 +51,11 @@ bool Polinom::FindAllRoot(Polinom& pp, Root& r)
         r.getMas()[i] = x1;
         
 
-        for (j = p.n - 1; j >= 0; j--) p.mas[j] = p.mas[j] + p.mas[j + 1] * x1;
-        for (j = 0; j < p.n; j++) p.mas[j] = p.mas[j + 1];
-        p.n--;
+        for (j = n - 1; j >= 0; j--) mas[j] = mas[j] + mas[j + 1] * x1;
+        for (j = 0; j < n; j++) mas[j] = mas[j + 1];
+        n--;
     }
-    std::ofstream outFile("result.txt", std::ios::app);
-    outFile << "Counter: " << std::endl << counter << std::endl;
-    outFile.close();
+    this->iterations = counter;
     return 1;
 }
 Polinom::Polinom(double** Matr, int columns) {
@@ -81,4 +77,9 @@ Polinom::Polinom(std::vector<double> p)
         k++;
     }
     mas[p.size()] = 1;
+}
+
+int Polinom::getIterations()
+{
+    return iterations;
 }
