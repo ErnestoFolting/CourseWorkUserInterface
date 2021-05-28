@@ -37,6 +37,7 @@ void fileWriter::outputStatistic(matrix tempMatr)
 	outFile << endl << "--------------ОЦІНКА СКЛАДНОСТІ--------------" << endl;
 	outFile << "Загальна кількість ітерацій для знаходження власних чисел: ";
 	outFile << tempMatr.iterations << endl;
+	outFile << "Загальна кількість перемноження матриць: " << tempMatr.counterMultiplies << endl;
 	outFile.close();
 }
 void fileWriter::outputError() {

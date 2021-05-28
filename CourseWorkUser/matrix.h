@@ -15,6 +15,7 @@ class matrix
 	double** MatrP;
 	double** MatrBN;
 	int iterations;
+	int counterMultiplies;
 	double** MatrB;
 	int rows;
 	double** Matr;
@@ -25,8 +26,8 @@ public:
 	std::vector<double> getP();
 	void setMatr(double** tempMatr);
 	int getRows();
-	matrix(int n):rows(n),columns(n){}
-	matrix(int n, int m):rows(n),columns(m){}
+	matrix(int n):rows(n),columns(n),iterations(0),counterMultiplies(0){}
+	matrix(int n, int m):rows(n),columns(m),iterations(0),counterMultiplies(0){}
 	static double** multiplyMatrix(double** Matr1, int n1, int m1, double** Matr2, int n2, int m2);
 	static double** crIdentityMatrix(int n);
 	bool calculateMatrixB (int stage);
@@ -43,6 +44,7 @@ public:
 	void findVectorsX();
 	bool Danilevsky();
 	int getIterations();
+	int getMultiplies();
 	void findAreaOfRoots();
 	bool Krylov();
 	Root getRoot();

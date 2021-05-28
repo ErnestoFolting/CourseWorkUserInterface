@@ -41,7 +41,7 @@ bool Polinom::FindAllRoot(Root& r)
         } while (abs(Polinom::FPol(*this, x1)) > 1e-12);
        
         if (isnan(real(x1))) {
-            MessageBox::Show("Не вдалось знайти власні числа.\n Можливо Ви не ввели всі коефіцієнти\nСпробуйте іншу матрицю.", "Помилка");
+            MessageBox::Show("Не вдалось знайти власні числа.\nМожливо Ви не ввели всі коефіцієнти\nСпробуйте іншу матрицю.", "Помилка");
             return 0;
         }
         if (imag(x1) > 1e-10) {

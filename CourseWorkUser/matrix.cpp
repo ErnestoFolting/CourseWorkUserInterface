@@ -69,6 +69,7 @@ bool matrix::calculateMatrixB(int stage)
 	}
 	else {
 		MatrBN = multiplyMatrix(MatrBN, rows, rows, MatrB, rows, rows);
+		counterMultiplies++;
 	}
 	return 1;
 }
@@ -89,6 +90,7 @@ bool matrix::calculateMatrixP() {
 		if (calculateMatrixB(i)) {
 			double** MatrBReverse = calculateMatrixBReverse(Matr, rows, i);
 			MatrD = matrix::multiplyMatrix(matrix::multiplyMatrix(MatrBReverse, rows, rows, Matr, rows, rows), rows, rows, MatrB, rows, rows);
+			counterMultiplies += 2;
 			Matr = MatrD;
 			double currentD;
 			if (rows - 3 - k >= 0) {
@@ -129,6 +131,11 @@ bool matrix::Danilevsky() {
 int matrix::getIterations()
 {
 	return iterations;
+}
+
+int matrix::getMultiplies()
+{
+	return counterMultiplies;
 }
 
 void matrix::findAreaOfRoots()
@@ -179,6 +186,7 @@ void matrix::createSelfVectors() {
 			tempMatr[k][0] = round(pow(temp, rows - k - 1)*1000)/1000;
 		}
 		double** tempMatr2 = matrix::multiplyMatrix(MatrBN, rows, rows, tempMatr, rows, 1);
+		counterMultiplies++;
 		matrix::toNorm(tempMatr2, rows);
 		vectorsX.push_back(tempMatr2);
 	}
@@ -223,6 +231,7 @@ void matrix::findSystem() {
 	}
 	for (int i = 0; i < rows; i++) {
 		startVector2 = matrix::multiplyMatrix(Matr, rows, rows, startVector2, rows, 1);
+		counterMultiplies++;
 		vectorsY.push_back(startVector2);
 		for (int j = 0; j < rows; j++) {
 			system[j][(rows - 2) - i] = startVector2[j][0];

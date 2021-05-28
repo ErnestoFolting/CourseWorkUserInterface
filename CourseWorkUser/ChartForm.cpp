@@ -32,10 +32,13 @@ System::Void CourseWorkUser::ChartForm::printSelfNumbers(Root roots) {
     String^ s = gcnew System::String(selfNumbers.c_str());
     label5->Text = s;
 }
-System::Void CourseWorkUser::ChartForm::printStatistics(int iterations) {
+System::Void CourseWorkUser::ChartForm::printStatistics(int iterations,int multiplies) {
     string iterationsStr = to_string(iterations);
     String^ s = gcnew System::String(iterationsStr.c_str());
     label7->Text = s;
+    string multipliesStr = to_string(multiplies);
+    String^ s2 = gcnew System::String(multipliesStr.c_str());
+    label9->Text = s2;
 }
 System::Void CourseWorkUser::ChartForm::printChart(std::vector<double> vec,std::vector<double>areaOfRoots)
 {
