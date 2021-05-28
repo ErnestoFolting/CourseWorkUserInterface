@@ -65,9 +65,9 @@ namespace CourseWorkUser {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Title^ title2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea3 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Title^ title3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
@@ -110,20 +110,20 @@ namespace CourseWorkUser {
 			// 
 			// chart1
 			// 
-			chartArea2->Name = L"ChartArea1";
-			this->chart1->ChartAreas->Add(chartArea2);
+			chartArea3->Name = L"ChartArea1";
+			this->chart1->ChartAreas->Add(chartArea3);
 			this->chart1->Location = System::Drawing::Point(581, 118);
 			this->chart1->Name = L"chart1";
-			series2->ChartArea = L"ChartArea1";
-			series2->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
-			series2->Name = L"Series1";
-			this->chart1->Series->Add(series2);
+			series3->ChartArea = L"ChartArea1";
+			series3->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
+			series3->Name = L"Series1";
+			this->chart1->Series->Add(series3);
 			this->chart1->Size = System::Drawing::Size(572, 300);
 			this->chart1->TabIndex = 2;
 			this->chart1->Text = L"chart1";
-			title2->Name = L"Title1";
-			title2->Text = L"Ãðàô³ê";
-			this->chart1->Titles->Add(title2);
+			title3->Name = L"Title1";
+			title3->Text = L"Ãðàô³ê";
+			this->chart1->Titles->Add(title3);
 			// 
 			// label2
 			// 

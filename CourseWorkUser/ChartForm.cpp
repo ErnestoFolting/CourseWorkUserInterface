@@ -20,7 +20,7 @@ System::Void CourseWorkUser::ChartForm::printVectors(std::vector<double**> vec) 
     }
     for (int i = 0; i < vec.size(); i++) {
         for (int j = 0; j < vec.size(); j++) {
-            dataGridView1->Rows[i]->Cells[j]->Value = vec[i][j][0];
+            dataGridView1->Rows[i]->Cells[j]->Value = vec[j][i][0];
         }
     }
 }

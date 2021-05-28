@@ -48,6 +48,10 @@ private: System::Windows::Forms::RadioButton^ radioButton2;
 private: System::Windows::Forms::DataGridView^ dataGridView2;
 private: System::Windows::Forms::Label^ label2;
 private: System::Windows::Forms::Button^ button1;
+private: System::Windows::Forms::Button^ button2;
+private: System::Windows::Forms::MenuStrip^ menuStrip1;
+private: System::Windows::Forms::ToolStripMenuItem^ ïðîÏðîãðàìóToolStripMenuItem;
+private: System::Windows::Forms::ToolStripMenuItem^ ³íñòðóêö³ÿToolStripMenuItem;
 
 
 protected:
@@ -75,9 +79,14 @@ private:
 		this->dataGridView2 = (gcnew System::Windows::Forms::DataGridView());
 		this->label2 = (gcnew System::Windows::Forms::Label());
 		this->button1 = (gcnew System::Windows::Forms::Button());
+		this->button2 = (gcnew System::Windows::Forms::Button());
+		this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
+		this->ïðîÏðîãðàìóToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+		this->³íñòðóêö³ÿToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 		(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->BeginInit();
 		(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 		(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
+		this->menuStrip1->SuspendLayout();
 		this->SuspendLayout();
 		// 
 		// button3
@@ -99,7 +108,7 @@ private:
 		this->label1->AutoSize = true;
 		this->label1->Font = (gcnew System::Drawing::Font(L"Oswald", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 			static_cast<System::Byte>(204)));
-		this->label1->Location = System::Drawing::Point(40, 154);
+		this->label1->Location = System::Drawing::Point(46, 52);
 		this->label1->Name = L"label1";
 		this->label1->Size = System::Drawing::Size(111, 32);
 		this->label1->TabIndex = 3;
@@ -108,7 +117,7 @@ private:
 		// 
 		// numericUpDown1
 		// 
-		this->numericUpDown1->Location = System::Drawing::Point(62, 189);
+		this->numericUpDown1->Location = System::Drawing::Point(68, 87);
 		this->numericUpDown1->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 10, 0, 0, 0 });
 		this->numericUpDown1->MaximumSize = System::Drawing::Size(75, 0);
 		this->numericUpDown1->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 2, 0, 0, 0 });
@@ -126,7 +135,7 @@ private:
 		this->dataGridView1->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::DisplayedCells;
 		this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 		this->dataGridView1->ColumnHeadersVisible = false;
-		this->dataGridView1->Location = System::Drawing::Point(187, 12);
+		this->dataGridView1->Location = System::Drawing::Point(193, 51);
 		this->dataGridView1->Name = L"dataGridView1";
 		this->dataGridView1->Size = System::Drawing::Size(360, 343);
 		this->dataGridView1->TabIndex = 5;
@@ -136,7 +145,7 @@ private:
 		// 
 		this->button6->Font = (gcnew System::Drawing::Font(L"Oswald", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 			static_cast<System::Byte>(204)));
-		this->button6->Location = System::Drawing::Point(46, 314);
+		this->button6->Location = System::Drawing::Point(52, 353);
 		this->button6->Name = L"button6";
 		this->button6->Size = System::Drawing::Size(105, 41);
 		this->button6->TabIndex = 7;
@@ -149,7 +158,7 @@ private:
 		this->radioButton1->AutoSize = true;
 		this->radioButton1->Font = (gcnew System::Drawing::Font(L"Oswald", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 			static_cast<System::Byte>(204)));
-		this->radioButton1->Location = System::Drawing::Point(137, 413);
+		this->radioButton1->Location = System::Drawing::Point(143, 452);
 		this->radioButton1->Name = L"radioButton1";
 		this->radioButton1->Size = System::Drawing::Size(135, 31);
 		this->radioButton1->TabIndex = 8;
@@ -163,7 +172,7 @@ private:
 		this->radioButton2->AutoSize = true;
 		this->radioButton2->Font = (gcnew System::Drawing::Font(L"Oswald", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 			static_cast<System::Byte>(204)));
-		this->radioButton2->Location = System::Drawing::Point(464, 413);
+		this->radioButton2->Location = System::Drawing::Point(470, 452);
 		this->radioButton2->Name = L"radioButton2";
 		this->radioButton2->Size = System::Drawing::Size(88, 31);
 		this->radioButton2->TabIndex = 8;
@@ -182,7 +191,7 @@ private:
 		this->dataGridView2->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::DisplayedCells;
 		this->dataGridView2->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 		this->dataGridView2->ColumnHeadersVisible = false;
-		this->dataGridView2->Location = System::Drawing::Point(594, 114);
+		this->dataGridView2->Location = System::Drawing::Point(600, 153);
 		this->dataGridView2->Name = L"dataGridView2";
 		this->dataGridView2->Size = System::Drawing::Size(100, 214);
 		this->dataGridView2->TabIndex = 9;
@@ -192,7 +201,7 @@ private:
 		// 
 		this->label2->Font = (gcnew System::Drawing::Font(L"Oswald", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 			static_cast<System::Byte>(204)));
-		this->label2->Location = System::Drawing::Point(574, 54);
+		this->label2->Location = System::Drawing::Point(580, 93);
 		this->label2->Name = L"label2";
 		this->label2->Size = System::Drawing::Size(137, 57);
 		this->label2->TabIndex = 10;
@@ -203,7 +212,7 @@ private:
 		this->button1->BackColor = System::Drawing::SystemColors::ActiveCaption;
 		this->button1->Font = (gcnew System::Drawing::Font(L"Oswald", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 			static_cast<System::Byte>(204)));
-		this->button1->Location = System::Drawing::Point(278, 389);
+		this->button1->Location = System::Drawing::Point(284, 428);
 		this->button1->Name = L"button1";
 		this->button1->Size = System::Drawing::Size(180, 55);
 		this->button1->TabIndex = 11;
@@ -211,11 +220,50 @@ private:
 		this->button1->UseVisualStyleBackColor = false;
 		this->button1->Click += gcnew System::EventHandler(this, &MenuForm::button1_Click);
 		// 
+		// button2
+		// 
+		this->button2->Font = (gcnew System::Drawing::Font(L"Oswald", 9.749999F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			static_cast<System::Byte>(204)));
+		this->button2->Location = System::Drawing::Point(52, 113);
+		this->button2->Name = L"button2";
+		this->button2->Size = System::Drawing::Size(105, 60);
+		this->button2->TabIndex = 12;
+		this->button2->Text = L"Îíîâèòè ðîçì³ðí³ñòü";
+		this->button2->UseVisualStyleBackColor = true;
+		this->button2->Click += gcnew System::EventHandler(this, &MenuForm::button2_Click);
+		// 
+		// menuStrip1
+		// 
+		this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+			this->ïðîÏðîãðàìóToolStripMenuItem,
+				this->³íñòðóêö³ÿToolStripMenuItem
+		});
+		this->menuStrip1->Location = System::Drawing::Point(0, 0);
+		this->menuStrip1->Name = L"menuStrip1";
+		this->menuStrip1->Size = System::Drawing::Size(754, 24);
+		this->menuStrip1->TabIndex = 13;
+		this->menuStrip1->Text = L"menuStrip1";
+		// 
+		// ïðîÏðîãðàìóToolStripMenuItem
+		// 
+		this->ïðîÏðîãðàìóToolStripMenuItem->Name = L"ïðîÏðîãðàìóToolStripMenuItem";
+		this->ïðîÏðîãðàìóToolStripMenuItem->Size = System::Drawing::Size(99, 20);
+		this->ïðîÏðîãðàìóToolStripMenuItem->Text = L"Ïðî ïðîãðàìó";
+		this->ïðîÏðîãðàìóToolStripMenuItem->Click += gcnew System::EventHandler(this, &MenuForm::ïðîÏðîãðàìóToolStripMenuItem_Click);
+		// 
+		// ³íñòðóêö³ÿToolStripMenuItem
+		// 
+		this->³íñòðóêö³ÿToolStripMenuItem->Name = L"³íñòðóêö³ÿToolStripMenuItem";
+		this->³íñòðóêö³ÿToolStripMenuItem->Size = System::Drawing::Size(75, 20);
+		this->³íñòðóêö³ÿToolStripMenuItem->Text = L"²íñòðóêö³ÿ";
+		this->³íñòðóêö³ÿToolStripMenuItem->Click += gcnew System::EventHandler(this, &MenuForm::³íñòðóêö³ÿToolStripMenuItem_Click);
+		// 
 		// MenuForm
 		// 
 		this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 		this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 		this->ClientSize = System::Drawing::Size(754, 518);
+		this->Controls->Add(this->button2);
 		this->Controls->Add(this->button1);
 		this->Controls->Add(this->label2);
 		this->Controls->Add(this->dataGridView2);
@@ -226,6 +274,8 @@ private:
 		this->Controls->Add(this->numericUpDown1);
 		this->Controls->Add(this->label1);
 		this->Controls->Add(this->button3);
+		this->Controls->Add(this->menuStrip1);
+		this->MainMenuStrip = this->menuStrip1;
 		this->MaximizeBox = false;
 		this->MaximumSize = System::Drawing::Size(770, 557);
 		this->MinimumSize = System::Drawing::Size(770, 557);
@@ -236,6 +286,8 @@ private:
 		(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->EndInit();
 		(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 		(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->EndInit();
+		this->menuStrip1->ResumeLayout(false);
+		this->menuStrip1->PerformLayout();
 		this->ResumeLayout(false);
 		this->PerformLayout();
 
@@ -249,7 +301,9 @@ private: System::Void radioButton1_CheckedChanged(System::Object^ sender, System
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void dataGridView1_CellEndEdit(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 private: System::Void dataGridView2_CellEndEdit(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
-private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-}
+private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e){}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void ïðîÏðîãðàìóToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void ³íñòðóêö³ÿToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }
