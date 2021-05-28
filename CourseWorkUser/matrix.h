@@ -17,6 +17,7 @@ class matrix
 	double** MatrB;
 	int rows;
 	double** Matr;
+	std::vector<double> areaOfRoots;
 public:
 	void setY0(double** vecY0);
 	double** getMatr();
@@ -36,9 +37,11 @@ public:
 	void findSystem();
 	void Kramer();
 	static double det(double** matr, int N);
+	std::vector<double> getAreaOfRoots();
 	void findQ();
 	void findVectorsX();
 	void Danilevsky();
+	void findAreaOfRoots();
 	void Krylov();
 	Root getRoot();
 	std::vector<double**> getVectorsX();

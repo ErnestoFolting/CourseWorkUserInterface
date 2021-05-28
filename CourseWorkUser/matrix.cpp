@@ -100,14 +100,30 @@ void matrix::calculateMatrixP() {
 }
 void matrix::Danilevsky() {
 	fileWriter::outputMatr(*this);
+	findAreaOfRoots();
 	calculateMatrixP();
 	findRoots();
 	createSelfVectors();
 	fileWriter::outputSelf(*this);
 }
 
+void matrix::findAreaOfRoots()
+{
+	vector<double> area;
+	for (int i = 0; i < rows; i++) {
+		double sum = 0;
+		for (int j = 0; j < rows; j++) {
+			if (i != j)sum += abs(Matr[i][j]);
+		}
+		area.push_back(Matr[i][i] - sum);
+		area.push_back(Matr[i][i] + sum);
+	}
+	this->areaOfRoots = area;
+}
+
 void matrix::Krylov() {
 	fileWriter::outputMatr(*this);
+	findAreaOfRoots();
 	findSystem();
 	Kramer();
 	findRoots();
@@ -249,6 +265,10 @@ double matrix::det(double** Matr, int N)
 		delete[] Matr2;
 		return determ;
 	}
+}
+std::vector<double> matrix::getAreaOfRoots()
+{
+	return areaOfRoots;
 }
 void matrix::findQ() {
 	double** q = new double* [rows];

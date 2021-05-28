@@ -102,7 +102,7 @@ System::Void CourseWorkUser::MenuForm::button1_Click(System::Object^ sender, Sys
             matrix Matrix(size);
             Matrix.setMatr(Matr);
             Matrix.Danilevsky();
-            form->printChart(Matrix.getP());
+            form->printChart(Matrix.getP(), Matrix.getAreaOfRoots());
             form->printVectors(Matrix.getVectorsX());
             form->printSelfNumbers(Matrix.getRoot());
         }
@@ -116,7 +116,7 @@ System::Void CourseWorkUser::MenuForm::button1_Click(System::Object^ sender, Sys
             Matrix.setMatr(Matr);
             Matrix.setY0(vectorY0);
             Matrix.Krylov();
-            form->printChart(Matrix.getP());
+            form->printChart(Matrix.getP(), Matrix.getAreaOfRoots());
             form->printVectors(Matrix.getVectorsX());
             form->printSelfNumbers(Matrix.getRoot());
         }
@@ -125,7 +125,7 @@ System::Void CourseWorkUser::MenuForm::button1_Click(System::Object^ sender, Sys
 
 System::Void CourseWorkUser::MenuForm::dataGridView1_CellEndEdit(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e)
 {
-    /*double q;
+    double q;
     
     if (!Double::TryParse(Convert::ToString(dataGridView1->CurrentCell->Value), q)) {
         MessageBox::Show("В матрицю можна вводити лише числа", "Помилка");
@@ -135,7 +135,7 @@ System::Void CourseWorkUser::MenuForm::dataGridView1_CellEndEdit(System::Object^
     if (s->IndexOf(',') != -1) {
         MessageBox::Show("В матрицю числа слід вводити через . ", "Помилка");
         dataGridView1->CurrentCell->Value = "0";
-    }*/
+    }
 }
 
 System::Void CourseWorkUser::MenuForm::dataGridView2_CellEndEdit(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e)

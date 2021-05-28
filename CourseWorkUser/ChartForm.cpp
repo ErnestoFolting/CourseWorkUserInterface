@@ -32,8 +32,14 @@ System::Void CourseWorkUser::ChartForm::printSelfNumbers(Root roots) {
     String^ s = gcnew System::String(selfNumbers.c_str());
     label5->Text = s;
 }
-System::Void CourseWorkUser::ChartForm::printChart(std::vector<double> vec)
+System::Void CourseWorkUser::ChartForm::printChart(std::vector<double> vec,std::vector<double>areaOfRoots)
 {
+    double min = areaOfRoots[0];
+    double max = areaOfRoots[0];
+    for (int i = 0; i < areaOfRoots.size(); i++) {
+        if (areaOfRoots[i] < min) min = areaOfRoots[i];
+        if (areaOfRoots[i] > max) max = areaOfRoots[i];
+    }
     chart1->Series[0]->Points->Clear();
     string function =  + "y = x^" + to_string(vec.size()) + " ";
     for (int i = 0; i < vec.size(); i++) {
@@ -46,7 +52,7 @@ System::Void CourseWorkUser::ChartForm::printChart(std::vector<double> vec)
     }
     String^ s = gcnew System::String(function.c_str());
     label2->Text = s;
-    for (int x = -3; x <= 3; x++) {
+    for (int x = min-1; x <= max+1; x++) {
         double sum = 0;
         for (int i = 0; i < vec.size(); i++) {
             sum += (-1)*(vec[i] * pow(x, vec.size() - i - 1));

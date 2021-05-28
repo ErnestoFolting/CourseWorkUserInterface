@@ -61,9 +61,9 @@ namespace CourseWorkUser {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea3 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Title^ title3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Title^ title1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
@@ -102,20 +102,20 @@ namespace CourseWorkUser {
 			// 
 			// chart1
 			// 
-			chartArea3->Name = L"ChartArea1";
-			this->chart1->ChartAreas->Add(chartArea3);
+			chartArea1->Name = L"ChartArea1";
+			this->chart1->ChartAreas->Add(chartArea1);
 			this->chart1->Location = System::Drawing::Point(581, 118);
 			this->chart1->Name = L"chart1";
-			series3->ChartArea = L"ChartArea1";
-			series3->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
-			series3->Name = L"Series1";
-			this->chart1->Series->Add(series3);
+			series1->ChartArea = L"ChartArea1";
+			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
+			series1->Name = L"Series1";
+			this->chart1->Series->Add(series1);
 			this->chart1->Size = System::Drawing::Size(572, 300);
 			this->chart1->TabIndex = 2;
 			this->chart1->Text = L"chart1";
-			title3->Name = L"Title1";
-			title3->Text = L"Ãðàô³ê";
-			this->chart1->Titles->Add(title3);
+			title1->Name = L"Title1";
+			title1->Text = L"Ãðàô³ê";
+			this->chart1->Titles->Add(title1);
 			// 
 			// label2
 			// 
@@ -182,7 +182,7 @@ namespace CourseWorkUser {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::Desktop;
+			this->BackColor = System::Drawing::SystemColors::Window;
 			this->ClientSize = System::Drawing::Size(1184, 561);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
@@ -206,7 +206,7 @@ namespace CourseWorkUser {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
-	public:  System::Void printChart(std::vector<double> vec);
+	public:  System::Void printChart(std::vector<double> vec,std::vector<double> areaOfRoots);
 	public:  System::Void CourseWorkUser::ChartForm::printVectors(std::vector<double**> vec);
 	public:  System::Void CourseWorkUser::ChartForm::printSelfNumbers(Root roots);
 };
