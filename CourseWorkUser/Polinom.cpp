@@ -32,12 +32,17 @@ bool Polinom::FindAllRoot(Root& r)
             defp.mas[j] = mas[j + 1] * complex(j + 1);
 
         x1 = complex(1, 1);
-        
+        int k = 0;
         do
         {
             x0 = x1;
             counter++;
             x1 = x0 - Polinom::FPol(*this, x0) / Polinom::FPol(defp, x0);
+            k++;
+            if (k > 100) {
+                MessageBox::Show("Не вдається знайти корені рівняння.\nМожливо Ви не ввели всі коефіцієнти\nСпробуйте іншу матрицю.", "Помилка");
+                return 0;
+            }
         } while (abs(Polinom::FPol(*this, x1)) > 1e-12);
        
         if (isnan(real(x1))) {
