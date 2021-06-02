@@ -7,7 +7,7 @@ class Root
     complexD mas[NMAX];
     int num;
 public:
-    int getNum();
-    complexD* getMas();
-    void setNum(int n);
+    int getNum(); // доступ до кількості коренів 
+    complexD* getMas(); // доступ до масиву коренів 
+    void setNum(int n); // встановлення к-сті коренів 
 };

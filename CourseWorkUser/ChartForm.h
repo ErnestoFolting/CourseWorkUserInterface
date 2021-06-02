@@ -263,10 +263,10 @@ namespace CourseWorkUser {
 
 		}
 #pragma endregion
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
-	public:  System::Void printChart(std::vector<double> vec,std::vector<double> areaOfRoots);
-	public:  System::Void CourseWorkUser::ChartForm::printVectors(std::vector<double**> vec);
-	public:  System::Void CourseWorkUser::ChartForm::printSelfNumbers(Root roots);
-	public:	  System::Void CourseWorkUser::ChartForm::printStatistics(int iterations, int multiplies);
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e); // кнопка повернутися 
+	public:  System::Void printChart(std::vector<double> vec,std::vector<double> areaOfRoots); //намалювати графік
+	public:  System::Void CourseWorkUser::ChartForm::printVectors(std::vector<double**> vec); //вивести власні вектори
+	public:  System::Void CourseWorkUser::ChartForm::printSelfNumbers(Root roots); //вивести власні числа
+	public:	  System::Void CourseWorkUser::ChartForm::printStatistics(int iterations, int multiplies); //вивести статистику складності
 };
 }

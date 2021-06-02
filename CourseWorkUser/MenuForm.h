@@ -293,17 +293,17 @@ private:
 
 	}
 #pragma endregion
-private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e);
-private: System::Void MenuForm_Load(System::Object^ sender, System::EventArgs^ e) {}
-private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e);
-private: System::Void radioButton2_CheckedChanged(System::Object^ sender, System::EventArgs^ e);
-private: System::Void radioButton1_CheckedChanged(System::Object^ sender, System::EventArgs^ e);
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
-private: System::Void dataGridView1_CellEndEdit(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
-private: System::Void dataGridView2_CellEndEdit(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e); // кнопка виходу 
+private: System::Void MenuForm_Load(System::Object^ sender, System::EventArgs^ e) {} 
+private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e); // кнопка очистки матриць
+private: System::Void radioButton2_CheckedChanged(System::Object^ sender, System::EventArgs^ e); // вибір метода Крилова
+private: System::Void radioButton1_CheckedChanged(System::Object^ sender, System::EventArgs^ e); // вибір метода Данилевського
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e); // кнока обчислити 
+private: System::Void dataGridView1_CellEndEdit(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e); // основна матриця
+private: System::Void dataGridView2_CellEndEdit(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e); // стартовий вектор для метода Крилова
 private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e){}
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e);
-private: System::Void проПрограмуToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
-private: System::Void інструкціяToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e); // кнопка оновлення розмірності матриці
+private: System::Void проПрограмуToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e); // вивід повідомлення про програму
+private: System::Void інструкціяToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e); // вивід короткої інструкції користувача
 };
 }
