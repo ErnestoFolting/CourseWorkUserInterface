@@ -48,7 +48,7 @@ public:
 	bool Krylov(); //метод Крилова
 	void setY0(double** vecY0); // встановлення стартового вектора
 	void findSystem(); // пошук системи рівнянь 
-	void Kramer(); // метод Крамера
+	bool Kramer(); // метод Крамера
 	static double det(double** matr, int N); // пошук визначника матриці
 	void findQ(); // пошук матриці Q
 	void findVectorsX(); // пошук власних векторів

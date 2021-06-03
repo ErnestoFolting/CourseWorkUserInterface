@@ -27,7 +27,9 @@ System::Void CourseWorkUser::ChartForm::printVectors(std::vector<double**> vec) 
 System::Void CourseWorkUser::ChartForm::printSelfNumbers(Root roots) {
     string selfNumbers;
     for (int i = 0; i < roots.getNum(); i++) {
-        selfNumbers += "L" + to_string(i + 1) + ": " + to_string(real(roots.getMas()[i])) + "  ";
+        string tempNumber = to_string(round(real(roots.getMas()[i]) * 1000) / 1000);
+        tempNumber = tempNumber.substr(0, tempNumber.length() - 3);
+        selfNumbers += "L" + to_string(i + 1) + ": " + tempNumber + "  ";
     }
     String^ s = gcnew System::String(selfNumbers.c_str());
     label5->Text = s;
@@ -52,10 +54,14 @@ System::Void CourseWorkUser::ChartForm::printChart(std::vector<double> vec,std::
     string function =  + "y = x^" + to_string(vec.size()) + " ";
     for (int i = 0; i < vec.size(); i++) {
         if (i < vec.size() - 1 && -1 * vec[i + 1] > 0) {
-            function += to_string(-1 * vec[i]) + "x^" + to_string(vec.size() - i - 1) + "+";
+            string tempNum = to_string(round(-1 * vec[i]*1000)/1000);
+            tempNum = tempNum.substr(0, tempNum.size() - 3);
+            function += tempNum + "x^" + to_string(vec.size() - i - 1) + "+";
         }
         else {
-            function += to_string(-1 * vec[i]) + "x^" + to_string(vec.size() - i - 1) + " ";
+            string tempNum = to_string(round(-1 * vec[i] * 1000) / 1000);
+            tempNum = tempNum.substr(0, tempNum.size() - 3);
+            function += tempNum + "x^" + to_string(vec.size() - i - 1) + " ";
         }
     }
     String^ s = gcnew System::String(function.c_str());

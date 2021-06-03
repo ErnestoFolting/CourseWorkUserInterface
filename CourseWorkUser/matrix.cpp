@@ -156,13 +156,14 @@ bool matrix::Krylov() {
 	fileWriter::outputMatr(*this);
 	findAreaOfRoots();
 	findSystem();
-	Kramer();
-	if (findRoots()) {
-		findQ();
-		findVectorsX();
-		fileWriter::outputSelf(*this);
-		fileWriter::outputStatistic(*this);
-		return 1;
+	if (Kramer()) {
+		if (findRoots()) {
+			findQ();
+			findVectorsX();
+			fileWriter::outputSelf(*this);
+			fileWriter::outputStatistic(*this);
+			return 1;
+		}
 	}
 	fileWriter::outputError();
 	return 0;
@@ -242,7 +243,7 @@ void matrix::findSystem() {
 	}
 	this->system = system;
 }
-void matrix::Kramer() {
+bool matrix::Kramer() {
 	double** roots = new double* [rows];
 	double** main = new double* [rows];
 	for (int i = 0; i < rows; i++) {
@@ -268,9 +269,16 @@ void matrix::Kramer() {
 			}
 		}
 		double tempDet = det(tempMatr, rows);
-		double root = round(tempDet / mainDet*1000)/1000;
-		this->p.push_back(root);
+		if (mainDet != 0) {
+			double root = round(tempDet / mainDet * 1000) / 1000;
+			this->p.push_back(root);
+		}
+		else {
+			MessageBox::Show("При обчисленні в методі Крамера визначник головної матриці дорівнює 0.\nСпробуйте іншу матрицю.", "Помилка");
+			return 0;
+		}
 	}
+	return 1;
 }
 std::vector<double> matrix::getP() {
 	return p;
